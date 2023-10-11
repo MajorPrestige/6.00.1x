@@ -790,6 +790,7 @@ try:
       normalize([0, 0, 0])
 except ZeroDivisionError:
       print('Invalid maximum element')
+      
 
 
 
