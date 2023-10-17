@@ -810,22 +810,80 @@ class Coordinate(object):
     def __str__(self):
         return '<' + str(self.getX()) + ',' + str(self.getY()) + '>'
 
-    def __eq__(self):
-        return self.x == self.y
-        
+    def __eq__(self, other):
+        if isinstance(other, Coordinate):
+            return self.getX() == other.getX() and self.getY() == other.getY()
+        return False
+    
     def __repr__(self):
-        return self.x == self.y
+        return 'Coordinate({},{})'.format(self.getX(), self.getY())
+
 
 
 c1 = Coordinate(7, 8)
 c2 = Coordinate(7, 8)
 
-print(c1.eq())
+print(repr(c1))
 
+#%%
 
+class intSet(object):
+    """An intSet is a set of integers
+    The value is represented by a list of ints, self.vals.
+    Each int in the set occurs in self.vals exactly once."""
 
+    def __init__(self):
+        """Create an empty set of integers"""
+        self.vals = []
 
+    def insert(self, e):
+        """Assumes e is an integer and inserts e into self""" 
+        if not e in self.vals:
+            self.vals.append(e)
 
+    def member(self, e):
+        """Assumes e is an integer
+           Returns True if e is in self, and False otherwise"""
+        return e in self.vals
+
+    def remove(self, e):
+        """Assumes e is an integer and removes e from self
+           Raises ValueError if e is not in self"""
+        try:
+            self.vals.remove(e)
+        except:
+            raise ValueError(str(e) + ' not found')
+
+    def __str__(self):
+        """Returns a string representation of self"""
+        self.vals.sort()
+        return '{' + ','.join([str(e) for e in self.vals]) + '}'
+        
+    def intersect(self, other):
+        if isinstance(other, intSet):
+            if self.vals + other.vals == 0:
+                return []
+            else:
+                for el in other.vals:
+                    if el not in self.vals:
+                        self.vals.append(el)
+                        
+                        
+
+a = intSet()
+a.insert(1)
+a.insert(2)
+a.insert(2)
+
+b = intSet()
+b.insert(1)
+b.insert(2)
+b.insert(3)
+
+print(a)
+print(b)
+
+            
 
 
 
