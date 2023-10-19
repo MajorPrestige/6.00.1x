@@ -22,6 +22,7 @@ def load_words(file_name):
     in_file.close()
     return word_list
 
+
 ### DO NOT MODIFY THIS FUNCTION ###
 def is_word(word_list, word):
     '''
@@ -102,7 +103,26 @@ class Message(object):
         Returns: a dictionary mapping a letter (string) to 
                  another letter (string). 
         '''
-        pass #delete this line and replace with your code here
+        
+        assert 0 <= shift < 26, "Invalid shift" 
+        
+        lowerCaseAlphabet = string.ascii_lowercase
+        upperCaseAlphabet = string.ascii_uppercase
+        encryptAlphabet = {}
+        
+        
+        
+                   
+        for i in range(len(lowerCaseAlphabet)):
+            encryptLetterIdx = i + shift
+            if encryptLetterIdx > 25:
+                encryptLetterIdx -= 26
+                
+            encryptAlphabet[lowerCaseAlphabet[i]] = lowerCaseAlphabet[encryptLetterIdx]
+            encryptAlphabet[upperCaseAlphabet[i]] = upperCaseAlphabet[encryptLetterIdx]
+
+            
+        return encryptAlphabet
 
     def apply_shift(self, shift):
         '''
@@ -116,7 +136,19 @@ class Message(object):
         Returns: the message text (string) in which every character is shifted
              down the alphabet by the input shift
         '''
-        pass #delete this line and replace with your code here
+        assert 0 <= shift < 26, "Invalid shift" 
+        
+        encryptAlphabet = self.build_shift_dict(shift)
+        encryptMessage = ""
+        
+        for l in self.message_text:
+            try:
+                encryptMessage += encryptAlphabet[l]
+            except KeyError:
+                encryptMessage += l
+        
+        return encryptMessage
+        
 
 class PlaintextMessage(Message):
     def __init__(self, text, shift):
@@ -212,7 +244,7 @@ plaintext = PlaintextMessage('hello', 2)
 print('Expected Output: jgnnq')
 print('Actual Output:', plaintext.get_message_text_encrypted())
     
-#Example test case (CiphertextMessage)
-ciphertext = CiphertextMessage('jgnnq')
-print('Expected Output:', (24, 'hello'))
-print('Actual Output:', ciphertext.decrypt_message())
+# #Example test case (CiphertextMessage)
+# ciphertext = CiphertextMessage('jgnnq')
+# print('Expected Output:', (24, 'hello'))
+# print('Actual Output:', ciphertext.decrypt_message())
