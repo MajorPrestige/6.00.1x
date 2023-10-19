@@ -975,8 +975,27 @@ print(obj.a)
 
 #%%
 
+def genPrimes():
+    primes = [] 
+    yield 2 
+    primes.append(2)
 
+    candidate = 3 
 
+    while True:
+        is_prime = True
+
+        for prime in primes:
+            if candidate % prime == 0:
+                is_prime = False
+                break
+
+        if is_prime:
+            primes.append(candidate)
+            yield candidate
+
+        candidate += 2
+    
 
 
 
