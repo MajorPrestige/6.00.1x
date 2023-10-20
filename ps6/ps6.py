@@ -219,8 +219,7 @@ class PlaintextMessage(Message):
 
         
 #Example test case (PlaintextMessage)
-# plaintext = PlaintextMessage('hello', 2)
-# print('Expected Output: jgnnq')
+# plaintext = PlaintextMessage('milk exception introduce film mass', 22)
 # print('Actual Output:', plaintext.get_message_text_encrypted())
 
 
@@ -235,7 +234,8 @@ class CiphertextMessage(Message):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         '''
-        pass #delete this line and replace with your code here
+        Message.__init__(self, text)
+        
 
     def decrypt_message(self):
         '''
@@ -253,10 +253,61 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        pass #delete this line and replace with your code here
+        wordList = self.message_text.split(" ")
+        shift = 0
+        decryptMessage = ""
+                
+        for word in wordList:
+            shift = 0
+            self.message_text = word
+            
+            while True:    
+                if shift == 26:         
+                    break
+                
+                validWord = self.apply_shift(shift)
+                
+                
+                if validWord.lower() in self.valid_words:
+                    decryptMessage += validWord + " "
+                    
+                    break
+                
+                else:
+                    shift += 1
+                    
+        return (abs(shift - 26), decryptMessage[:-1])
+        
+        
 
     
-# #Example test case (CiphertextMessage)
-# ciphertext = CiphertextMessage('jgnnq')
+# Example test case (CiphertextMessage)
+# ciphertext = CiphertextMessage('Pqpugpug')
+# ciphertext = CiphertextMessage('Tkmu Pvyboi sc k widrsmkv mrkbkmdob mbokdon yx dro czeb yp k wywoxd dy rovz myfob kx sxceppsmsoxdvi zvkxxon rkmu Ro rkc loox boqscdobon pyb mvkccoc kd WSD dgsmo lopybo led rkc bozybdonvi xofob zkccon k mvkcc Sd rkc loox dro dbknsdsyx yp dro bocsnoxdc yp Okcd Mkwzec dy lomywo Tkmu Pvyboi pyb k pog xsqrdc okmr iokb dy onemkdo sxmywsxq cdenoxdc sx dro gkic wokxc kxn odrsmc yp rkmusxq')
 # print('Expected Output:', (24, 'hello'))
 # print('Actual Output:', ciphertext.decrypt_message())
+
+def decrypt_story():
+    story = get_story_string()
+    ciphertext = CiphertextMessage(story)
+    return ciphertext.decrypt_message()
+
+
+
+decrypt_story()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
