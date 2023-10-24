@@ -309,5 +309,3 @@ decrypt_story()
 
 
 
-
-
