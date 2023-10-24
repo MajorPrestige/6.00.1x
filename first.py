@@ -995,6 +995,15 @@ def genPrimes():
             yield candidate
 
         candidate += 2
+        
+#%%
+
+a = [1, 2]
+b = a[:]
+
+b.append(3)
+
+print(b)
     
 
 
