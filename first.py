@@ -1007,6 +1007,78 @@ print(b)
     
 
 
+#%%
+
+import time
+def linearSearch(L, x):    
+    for e in L:
+        if e == x:
+            return True
+    return False
+
+time_start = time.time()
+linearSearch([1, 2 , 3], 2)
+time_stop = time.time() - time_start
+print("time = ", time_start, " : ", time_stop, "s")
+
+
+
+#%%
+
+def program1(x):
+    total = 0
+    for i in range(1000):
+        total += i
+
+    while x > 0:
+        x -= 1
+        total += x
+
+    return total
+
+
+
+
+
+print(program1(1))
+
+
+#%%
+
+def program3(L):
+    totalSum = 0
+    highestFound = None
+    for x in L:
+        print('hello')
+        totalSum += x
+        
+program3([]) 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
