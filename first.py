@@ -1197,12 +1197,28 @@ def sum_digits(s):
 sum_digits("a;0d")
 
 
+
 #%%
 
+def primes_list(N):
+    primeList = [2]
+    
+    if N < 2:
+        return []
+    
+    for i in range(3, N + 1, 2):
+        for p in primeList:
+            if i % p == 0:
+                break
+        else:
+            primeList.append(i)
+    
+    return primeList
+
+print(primes_list(204))
 
 
-
-
+#%%
 
 
 
