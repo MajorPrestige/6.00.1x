@@ -1150,6 +1150,7 @@ def McNuggets(n):
 
     high = n//6+1
 
+
     if n != 0:
         for i in range(high):
             for j in range(high):
@@ -1167,6 +1168,45 @@ print(McNuggets(16))
 print(McNuggets(0))
 print(McNuggets(18))
 print(McNuggets(66))
+
+#%%
+
+def sum_digits(s):
+    """ assumes s a string
+        Returns an int that is the sum of all of the digits in s.
+          If there are no digits in s it raises a ValueError exception. """
+    # Your code here
+    answer = 0
+    noDigits = True
+    
+    for i in s:
+        if i.isdigit():
+            noDigits = False
+            
+    if noDigits:
+        raise ValueError
+    
+    for i in s:
+        if i.isdigit():
+            answer += int(i)
+        
+    return answer
+        
+
+
+sum_digits("a;0d")
+
+
+#%%
+
+
+
+
+
+
+
+
+
 
 
 
