@@ -1177,24 +1177,21 @@ def sum_digits(s):
           If there are no digits in s it raises a ValueError exception. """
     # Your code here
     answer = 0
-    noDigits = True
-    
-    for i in s:
-        if i.isdigit():
-            noDigits = False
+    isDigits = False
             
-    if noDigits:
-        raise ValueError
     
     for i in s:
         if i.isdigit():
             answer += int(i)
-        
+            isDigits = True
+    
+    if not isDigits:
+        raise ValueError    
+    
     return answer
         
 
-
-sum_digits("a;0d")
+sum_digits("a;d")
 
 
 
