@@ -1217,23 +1217,26 @@ print(primes_list(204))
 
 #%%
 
+def uniqueValues(aDict):
+    valueCount = {}
+    uniqueKeys = []
+
+    for value in aDict.values():
+        valueCount[value] = valueCount.get(value, 0) + 1
+
+    for key, value in aDict.items():
+        if valueCount[value] == 1:
+            uniqueKeys.append(key)
+
+    return sorted(uniqueKeys)
 
 
+aDict1 = {1: 1, 3: 2, 6: 0, 7: 0, 8: 4, 10: 0}
+aDict2 = {1: 1, 2: 1, 3: 1}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+uniqueValues(aDict1)
+# uniqueValues(aDict2)
 
 
 
