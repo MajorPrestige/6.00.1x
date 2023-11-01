@@ -6,8 +6,9 @@ Created on Sat Sep  9 12:14:48 2023
 @author: prestige
 """
 
-#%%
+# %%
 
+import time
 for iteration in range(5):
     count = 0
     while True:
@@ -15,19 +16,18 @@ for iteration in range(5):
             count += 1
         print("Iteration " + str(iteration) + "; count is: " + str(count))
         break
-    
 
 
-#%%
+# %%
 
 s = 'azcbobobegghaklbobob'
 substring = 'bob'
 count = 0
 
 for i in range(len(s) - len(substring) + 1):
-        print(s[i:i + 3])
+    print(s[i:i + 3])
 
-#%%
+# %%
 
 
 s = 'azcbobobegghakl'
@@ -40,21 +40,20 @@ for l in range(1, len(s)):
         currentString += s[l]
     else:
         currentString = s[l]
-        
+
     if len(answer) < len(currentString):
         answer = currentString
-        
+
 print(s[0: 3])
 
 
-#%%
-
+# %%
 
 
 ## DO NOT MODIFY THE IMPLEMENTATION OF THE Person CLASS ##
 class Person(object):
     def __init__(self, name):
-        #create a person with name name
+        # create a person with name name
         self.name = name
         try:
             firstBlank = name.rindex(' ')
@@ -62,33 +61,40 @@ class Person(object):
         except:
             self.lastName = name
         self.age = None
+
     def getLastName(self):
-        #return self's last name
+        # return self's last name
         return self.lastName
+
     def setAge(self, age):
-        #assumes age is an int greater than 0
-        #sets self's age to age (in years)
+        # assumes age is an int greater than 0
+        # sets self's age to age (in years)
         self.age = age
+
     def getAge(self):
-        #assumes that self's age has been set
-        #returns self's current age in years
+        # assumes that self's age has been set
+        # returns self's current age in years
         if self.age == None:
             raise ValueError
         return self.age
+
     def __lt__(self, other):
-        #return True if self's name is lexicographically less
-        #than other's name, and False otherwise
+        # return True if self's name is lexicographically less
+        # than other's name, and False otherwise
         if self.lastName == other.lastName:
             return self.name < other.name
         return self.lastName < other.lastName
+
     def __str__(self):
-        #return self's name
+        # return self's name
         return self.name
-        
+
+
 class USResident(Person):
     """ 
     A Person who resides in the US.
     """
+
     def __init__(self, name, status):
         """ 
         Initializes a Person object. A USResident object inherits 
@@ -102,21 +108,21 @@ class USResident(Person):
             self.status = status
         else:
             raise ValueError
-        
+
     def getStatus(self):
         """
         Returns the status
         """
         # Write your code here
         return self.status
-    
-    
+
+
 a = USResident('Tim Beaver', 'citizen')
 print(a.getStatus())
 b = USResident('Tim Horton', 'non-resident')
 
 
-#%%
+# %%
 
 maxNumber = 10
 maxFactor = 10
@@ -126,20 +132,20 @@ for number in range(1, maxNumber + 1):
         #print(str(number) + " * " + str(factor) + " = " + str(factor*number))
         print(f"{number} * {factor} = {number*factor}", end="\t")
     print()
-        
-#%%
+
+# %%
 
 for iteration in range(1, 5):
     count = 0
     for letter in "hello, world":
         count += 1
-        
+
     if iteration % 2 == 0:
         break
     print("Iteration " + str(iteration) + "; count is: " + str(count))
     iteration += 1
-    
-#%%
+
+# %%
 
 x = 5
 epsilon = 1
@@ -155,7 +161,7 @@ if abs(guess**2 - x) >= epsilon:
     print('failed')
 else:
     print('succeeded: ' + str(guess))
-#%%
+# %%
 
 print("Please think of a number between 0 and 100!")
 
@@ -168,8 +174,9 @@ guessed = False
 while not guessed:
     # Bisection search: guess the midpoint between our current high and low guesses
     guess = (hi + lo)//2
-    print("Is your secret number " + str(guess)+ "?")
-    user_inp = input("Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly. ")
+    print("Is your secret number " + str(guess) + "?")
+    user_inp = input(
+        "Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly. ")
 
     if user_inp == 'c':
         # We got it right!
@@ -185,7 +192,7 @@ while not guessed:
 
 print('Game over. Your secret number was: ' + str(guess))
 
-#%%
+# %%
 
 l = 0
 h = 100
@@ -194,7 +201,7 @@ ans = (h + l)//2
 while True:
     print
     print(f"Is your secret number {ans}?")
-    res=input("Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly.")
+    res = input("Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly.")
     if res == "h":
         h = ans
         ans = (ans+l)//2
@@ -207,98 +214,102 @@ while True:
     else:
         print("Sorry, I did not understand your input.")
 
-#%%
+# %%
+
 
 def iterPower(base, exp):
-    if exp == 0: 
+    if exp == 0:
         return 1
-    
+
     answer = 1
-    
+
     for i in range(1, exp+1):
         answer = base * answer
-        
+
     return answer
-    
+
+
 print(iterPower(9, 0))
 
-#%%
+# %%
+
 
 def recurPower(base, exp):
     '''
     base: int or float.
     exp: int >= 0
- 
+
     returns: int or float, base^exp
     '''
     # Your code here
-    
+
     if exp == 0:
         return 1
-     
+
     return base * recurPower(base, exp - 1)
+
 
 print(recurPower(2, 3))
 
-#%%
+# %%
+
 
 def gcdIter(a, b):
     start = min(a, b)
     answer = 0
-    
+
     for i in range(0, start + 1):
         if a % i == 0 and b % i == 0:
             answer = i
-    
+
     return answer
-            
-    
-    
 
 
 print(gcdIter(6, 6))
 
-#%%
+# %%
+
 
 def gcdRecur(a, b):
     if b == 0:
         return a
     else:
         return gcdRecur(b, a % b)
-    
-    
+
+
 print(gcdRecur(2, 4))
 
-#%%
+# %%
 aStr = 'abcdefghijklmnopqrstuvwxyz'
-aStr[13 : -1]
+aStr[13: -1]
 
-#%%
+# %%
+
+
 def isIn(char, aStr):
-    
+
     lenOfAStr = len(aStr)
-    
+
     if lenOfAStr == 0:
         return False
-    
+
     middleChar = lenOfAStr//2
-    
+
     if aStr[middleChar] == char:
         return True
-    
+
     elif aStr[middleChar] > char:
         return isIn(char, aStr[:middleChar])
-    
+
     elif aStr[middleChar] < char:
         return isIn(char, aStr[middleChar + 1:])
-    
+
     else:
         return False
-                    
-                
+
 
 isIn('i', 'abcdefghijklmnopqrstuvwxyz')
-#%%
+# %%
 
 balance = 4773
 annualInterestRate = 0.2
@@ -308,84 +319,81 @@ lowestPayment = 440
 for i in range(12):
     unpaidBalance = balance - lowestPayment
     balance = unpaidBalance + annualInterestRate/12.0*unpaidBalance
-    
+
 print('Remaining balance: ' + str(round(balance, 2)))
-	      
-    
-    
-#%%
+
+
+# %%
 balance = 3329
 annualInterestRate = 0.2
 
-#Result Your Code Should Generate:
-#-------------------
-#Lowest Payment: 310
+# Result Your Code Should Generate:
+# -------------------
+# Lowest Payment: 310
 
 LowestPayment = 0
 print('Lowest Payment:', round(LowestPayment))
-    
-#%%
+
+# %%
 balance = 4773
 annualInterestRate = 0.2
 
 
 def findLowestPayment(balance, annualInterestRate):
-    
+
     lowestPayment = 0.01
-    
+
     while True:
         abstractBalance = balance
-        
+
         for i in range(12):
             unpaidBalance = abstractBalance - lowestPayment
             abstractBalance = unpaidBalance + annualInterestRate/12.0*unpaidBalance
-            
+
         if abstractBalance <= 0:
             return lowestPayment
-        
+
         else:
             lowestPayment += 0.01
-    
-                
-        
+
+
 answer = round(findLowestPayment(balance, annualInterestRate), 2)
 print(answer)
-    
-#%%
+
+# %%
 
 balance = 999999
 annualInterestRate = 0.18
 
+
 def findLowestPayment(balance, annualInterestRate):
-    
+
     lowerBound = balance/12
     upperBound = balance*((1 + annualInterestRate/12)*12)/12
-    
-    
+
     while True:
-        
+
         abstractBalance = balance
         lowestPayment = (lowerBound + upperBound)/2
-        
+
         for i in range(12):
             unpaidBalance = abstractBalance - lowestPayment
             abstractBalance = unpaidBalance + annualInterestRate/12.0*unpaidBalance
-        
+
         if round(abstractBalance) == 0:
             return lowestPayment
-        
+
         elif abstractBalance > 0:
             lowerBound = lowestPayment
-        
+
         else:
             upperBound = lowestPayment
-    
-                
-        
+
+
 answer = round(findLowestPayment(balance, annualInterestRate), 2)
 print(answer)
 
-#%%
+# %%
 
 l = 0
 h = 100
@@ -394,7 +402,7 @@ ans = (h + l)//2
 while True:
     print
     print(f"Is your secret number {ans}?")
-    res=input("Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly.")
+    res = input("Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly.")
     if res == "h":
         h = ans
         ans = (ans+l)//2
@@ -407,40 +415,40 @@ while True:
     else:
         print("Sorry, I did not understand your input.")
 
-#%%
+# %%
+
 
 def oddTuples(aTup):
     '''
     aTup: a tuple
-    
+
     returns: tuple, every other element of aTup. 
     '''
     # Your Code Here
     ans = ()
     for i in range(len(aTup)):
-        if i%2 == 0:
+        if i % 2 == 0:
             ans += (aTup[i],)
-    
+
     return ans
-        
+
 
 oddTuples(('I', 'am', 'a', 'test', 'tuple'))
 
 
-
-#%%
+# %%
 
 def oddTuples(aTuple):
     # Use slicing to create a new tuple with every other element starting from index 0
     print(len(aTuple))
     return aTuple[::2]
 
+
 # Test the procedure
 oddTuples(('I', 'am', 'a', 'test', 'tuple'))
 
 
-
-#%%
+# %%
 
 aList = [0, 1, 2, 3, 4, 5]
 bList = [0, 1, 2, 3, 4, 5]
@@ -449,27 +457,34 @@ print(aList is bList)
 
 [1, 1, 2, 3, 5, 8, 13]
 
-#%%
+# %%
+
+
 def applyEachTo(L, x):
     result = []
     for i in range(len(L)):
         result.append(L[i](x))
     return result
 
+
 def square(a):
     return a*a
+
 
 def halve(a):
     return a/2
 
+
 def inc(a):
     return a+1
 
+
 applyEachTo([inc, max], -3)
 
-#%%
+# %%
 
 # -*- coding: utf-8 -*-
+
 
 def lyrics_to_frequencies(lyrics):
     myDict = {}
@@ -479,60 +494,61 @@ def lyrics_to_frequencies(lyrics):
         else:
             myDict[word] = 1
     return myDict
-    
-    
+
+
 she_loves_you = ['she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
-'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
-'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
+                 'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
+                 'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
 
-'you', 'think', "you've", 'lost', 'your', 'love',
-'well', 'i', 'saw', 'her', 'yesterday-yi-yay',
-"it's", 'you', "she's", 'thinking', 'of',
-'and', 'she', 'told', 'me', 'what', 'to', 'say-yi-yay',
+                 'you', 'think', "you've", 'lost', 'your', 'love',
+                 'well', 'i', 'saw', 'her', 'yesterday-yi-yay',
+                 "it's", 'you', "she's", 'thinking', 'of',
+                 'and', 'she', 'told', 'me', 'what', 'to', 'say-yi-yay',
 
-'she', 'says', 'she', 'loves', 'you',
-'and', 'you', 'know', 'that', "can't", 'be', 'bad',
-'yes', 'she', 'loves', 'you',
-'and', 'you', 'know', 'you', 'should', 'be', 'glad',
+                 'she', 'says', 'she', 'loves', 'you',
+                 'and', 'you', 'know', 'that', "can't", 'be', 'bad',
+                 'yes', 'she', 'loves', 'you',
+                 'and', 'you', 'know', 'you', 'should', 'be', 'glad',
 
-'she', 'said', 'you', 'hurt', 'her', 'so',
-'she', 'almost', 'lost', 'her', 'mind',
-'and', 'now', 'she', 'says', 'she', 'knows',
-"you're", 'not', 'the', 'hurting', 'kind',
+                 'she', 'said', 'you', 'hurt', 'her', 'so',
+                 'she', 'almost', 'lost', 'her', 'mind',
+                 'and', 'now', 'she', 'says', 'she', 'knows',
+                 "you're", 'not', 'the', 'hurting', 'kind',
 
-'she', 'says', 'she', 'loves', 'you',
-'and', 'you', 'know', 'that', "can't", 'be', 'bad',
-'yes', 'she', 'loves', 'you',
-'and', 'you', 'know', 'you', 'should', 'be', 'glad',
+                 'she', 'says', 'she', 'loves', 'you',
+                 'and', 'you', 'know', 'that', "can't", 'be', 'bad',
+                 'yes', 'she', 'loves', 'you',
+                 'and', 'you', 'know', 'you', 'should', 'be', 'glad',
 
-'oo', 'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
-'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
-'with', 'a', 'love', 'like', 'that',
-'you', 'know', 'you', 'should', 'be', 'glad',
+                 'oo', 'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
+                 'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
+                 'with', 'a', 'love', 'like', 'that',
+                 'you', 'know', 'you', 'should', 'be', 'glad',
 
-'you', 'know', "it's", 'up', 'to', 'you',
-'i', 'think', "it's", 'only', 'fair',
-'pride', 'can', 'hurt', 'you', 'too',
-'pologize', 'to', 'her',
+                 'you', 'know', "it's", 'up', 'to', 'you',
+                 'i', 'think', "it's", 'only', 'fair',
+                 'pride', 'can', 'hurt', 'you', 'too',
+                 'pologize', 'to', 'her',
 
-'Because', 'she', 'loves', 'you',
-'and', 'you', 'know', 'that', "can't", 'be', 'bad',
-'Yes', 'she', 'loves', 'you',
-'and', 'you', 'know', 'you', 'should', 'be', 'glad',
+                 'Because', 'she', 'loves', 'you',
+                 'and', 'you', 'know', 'that', "can't", 'be', 'bad',
+                 'Yes', 'she', 'loves', 'you',
+                 'and', 'you', 'know', 'you', 'should', 'be', 'glad',
 
-'oo', 'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
-'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
-'with', 'a', 'love', 'like', 'that',
-'you', 'know', 'you', 'should', 'be', 'glad',
-'with', 'a', 'love', 'like', 'that',
-'you', 'know', 'you', 'should', 'be', 'glad',
-'with', 'a', 'love', 'like', 'that',
-'you', 'know', 'you', 'should', 'be', 'glad',
-'yeah', 'yeah', 'yeah',
-'yeah', 'yeah', 'yeah', 'yeah'
-]
+                 'oo', 'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
+                 'she', 'loves', 'you', 'yeah', 'yeah', 'yeah',
+                 'with', 'a', 'love', 'like', 'that',
+                 'you', 'know', 'you', 'should', 'be', 'glad',
+                 'with', 'a', 'love', 'like', 'that',
+                 'you', 'know', 'you', 'should', 'be', 'glad',
+                 'with', 'a', 'love', 'like', 'that',
+                 'you', 'know', 'you', 'should', 'be', 'glad',
+                 'yeah', 'yeah', 'yeah',
+                 'yeah', 'yeah', 'yeah', 'yeah'
+                 ]
 
 beatles = lyrics_to_frequencies(she_loves_you)
+
 
 def most_common_words(freqs):
     values = freqs.values()
@@ -543,9 +559,11 @@ def most_common_words(freqs):
             words.append(k)
     return (words, best)
 
+
 (a, b) = most_common_words(beatles)
-print(a)          
-    
+print(a)
+
+
 def words_often(freqs, minTimes):
     result = []
     done = False
@@ -554,16 +572,19 @@ def words_often(freqs, minTimes):
         if temp[1] >= minTimes:
             result.append(temp)
             for w in temp[0]:
-                del(freqs[w])  #remove word from dictionary
+                del(freqs[w])  # remove word from dictionary
         else:
             done = True
     return result
-    
+
 #print(words_often(beatles, 5))
 
-#%%
-            
-aDict = {'a': [15, 2], 'c': [18, 13, 10, 11, 10], 'b': [7, 3, 14, 1, 18, 5, 13, 10, 2, 11], 'd': [18]}
+# %%
+
+
+aDict = {'a': [15, 2], 'c': [18, 13, 10, 11, 10], 'b': [
+    7, 3, 14, 1, 18, 5, 13, 10, 2, 11], 'd': [18]}
+
 
 def biggest(aDict):
     '''
@@ -574,10 +595,10 @@ def biggest(aDict):
     # Your Code Here
     bigest = 0
     ans = None
-    
+
     if len(aDict) == 0:
         return ans
-    
+
     for a in aDict:
         if len(aDict[a]) >= bigest:
             bigest = len(aDict[a])
@@ -585,68 +606,69 @@ def biggest(aDict):
 
     return a
 
+
 biggest(aDict)
 
-#%%
+# %%
 
 a = {}
 
 print(len(a))
-    
-#%%
 
-def a(aList): 
+# %%
+
+
+def a(aList):
     ans = []
     for item in aList:
         if len(item) <= 4:
             ans.append(item)
     return ans
-    
+
+
 aList = ['apple', 'cat', 'dog', 'banana']
 a(aList)
 
 
 def Slic_Rev_Conc(Tupl):
-    part1=Tupl[0:int(len(Tupl)/3)]
-    part2=Tupl[int(len(Tupl)/3):2*int(len(Tupl)/3)]
-    part3=Tupl[2*int(len(Tupl)/3):]
+    part1 = Tupl[0:int(len(Tupl)/3)]
+    part2 = Tupl[int(len(Tupl)/3):2*int(len(Tupl)/3)]
+    part3 = Tupl[2*int(len(Tupl)/3):]
     return (part1[::-1]+part2[::-1]+part3[::-1])
 
-Tupl=(1,2,3,4,5,6,7,8,9,10,11,12)
+
+Tupl = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
 print(Slic_Rev_Conc(Tupl))
 
-        
-    
-    
+
 #d = {1: 10, 2:20, 3:30}
-#dict_invert(d)
+# dict_invert(d)
 
 def dict_invert(d):
-    return dict((v,[k])for k,v in d.items())
+    return dict((v, [k])for k, v in d.items())
 
-d = {1: 10, 2:20, 3:30}
+
+d = {1: 10, 2: 20, 3: 30}
 dict_invert(d)
 
-#%%
+# %%
+
 
 def closest_power(base, num):
     exponent = 0
-    
+
     if num == 1:
         return exponent
-    
-    while True: 
-        
+
+    while True:
+
         if abs(base**exponent-num) <= abs(base**(exponent + 1) - num):
             return exponent
-        
-        
+
         exponent += 1
-        
-        
-        
-    
-closest_power(4,11)
+
+
+closest_power(4, 11)
 
 
 # def closest_power(base, num):
@@ -654,17 +676,18 @@ closest_power(4,11)
 #     if base > num:
 #         result = 0
 #     elif base == num:
-#         result = 1  
+#         result = 1
 #     else:
 #         for i in range(2, num):
 #             if abs(base**i-num) <= abs(base**(i+1)-num):
 #                 result = i
 #                 break
 #     return result
-#%%
+# %%
 x = "pi"
 y = "pie"
 x, y = y, x
+
 
 def f(x):
     a = []
@@ -673,15 +696,15 @@ def f(x):
         f(x-1)
 
 
-
-
 d = {'a': 'b'}
 # print(d['b'])
 
-#%%
+# %%
+
 
 def Square(x):
     return SquareHelper(abs(x), abs(x))
+
 
 def SquareHelper(n, x):
     if n == 0:
@@ -689,78 +712,85 @@ def SquareHelper(n, x):
     return SquareHelper(n-1, x) + x
 
 
-
 Square(100)
 
-#%%
+# %%
 
-# For example, if L = [[1, 2], [3, 4], [5, 6, 7]] then 
+# For example, if L = [[1, 2], [3, 4], [5, 6, 7]] then
 # deep_reverse(L) mutates L to be [[7, 6, 5], [4, 3], [2, 1]]
-    
+
+
 def deep_reverse(L):
     ans = []
-    
+
     for i in reversed(L):
         subAns = []
         for num in reversed(i):
             subAns.append(num)
-        ans.append(subAns)   
-        
+        ans.append(subAns)
+
     L[:] = ans
-    
+
 
 L = [[1, 2], [3, 4], [5, 6, 7]]
 deep_reverse(L)
 
 print(L)
 
-#%%
+# %%
 
 
 def uniqueValues(aDict):
     ans = []
     listOfvalues = []
-    
+
     if len(aDict) == 0:
         return ans
-    
+
     for v in aDict.values():
         listOfvalues.append(v)
-    
+
     for k in aDict.keys():
         if listOfvalues.count(aDict[k]) > 1:
             continue
         else:
             ans.append(k)
-            
+
     ans.sort()
     return ans
 
+
 uniqueValues({1: 1, 2: 1, 3: 3})
 
-#%%
+# %%
+
 
 def sum_of_digits(N):
     # Base case: If N is a single-digit number, return N
     if N < 10:
         return N
-    
+
     # Recursive case: Calculate the sum of digits of N by
     # adding the last digit to the sum of digits of the rest
     last_digit = N % 10
     rest_of_digits = N // 10
     return last_digit + sum_of_digits(rest_of_digits)
 
+
 # Example usage:
 N = 12345
 result = sum_of_digits(N)
-print(result)  # Output: 15  
-#%%
+print(result)  # Output: 15
+# %%
+
 
 def f(i):
     return i + 2
+
+
 def g(i):
     return i > 5
+
 
 def applyF_filterG(L, f, g):
     """
@@ -774,41 +804,41 @@ def applyF_filterG(L, f, g):
     Returns the largest element in the mutated L or -1 if the list is empty
     """
     # Your code here
-    
+
     newL = []
-    
+
     if len(L) == 0:
         return -1
-    
+
     for i in L:
         if g(f(i)):
             newL.append(i)
-            
+
     L[:] = newL
-    
+
     return max(L)
-    
-    
+
+
 L = [0, -10, 5, 6, -4]
 print(applyF_filterG(L, f, g))
 print(L)
 
 
-#%%
+# %%
 def SquareHelper(n, x):
     if n == 0:
         return 0
     return SquareHelper(n-1, x) + x
 
+
 def Square(x):
     return SquareHelper(abs(x), abs(x))
 
 
-Square(1) 
+Square(1)
 
 
-
-#%%
+# %%
 
 def fancy_divide(numbers, index):
     try:
@@ -823,46 +853,48 @@ def fancy_divide(numbers, index):
         print("1")
     finally:
         print("0")
-        
-fancy_divide([0, 2, 4], 0)     
 
- 
-#%%
+
+fancy_divide([0, 2, 4], 0)
+
+
+# %%
 
 
 def fancy_divide(list_of_numbers, index):
-   denom = list_of_numbers[index]
-   return [simple_divide(item, denom) for item in list_of_numbers]
+    denom = list_of_numbers[index]
+    return [simple_divide(item, denom) for item in list_of_numbers]
 
 
 def simple_divide(item, denom):
-   try:
-       return item / denom
-   except ZeroDivisionError:
-       return []
-       
-       
-   
-    
+    try:
+        return item / denom
+    except ZeroDivisionError:
+        return []
+
+
 fancy_divide([0, 2, 4], 0)
 
-#%%
+# %%
+
 
 def normalize(numbers):
     max_number = max(numbers)
     for i in range(len(numbers)):
         numbers[i] /= float(max_number)
-    return numbers  
+    return numbers
+
 
 try:
-      normalize([0, 0, 0])
+    normalize([0, 0, 0])
 except ZeroDivisionError:
-      print('Invalid maximum element')
+    print('Invalid maximum element')
 
-#%%
+# %%
+
 
 class Coordinate(object):
-    def __init__(self,x,y):
+    def __init__(self, x, y):
         self.x = x
         self.y = y
 
@@ -882,10 +914,9 @@ class Coordinate(object):
         if isinstance(other, Coordinate):
             return self.getX() == other.getX() and self.getY() == other.getY()
         return False
-    
+
     def __repr__(self):
         return 'Coordinate({},{})'.format(self.getX(), self.getY())
-
 
 
 c1 = Coordinate(7, 8)
@@ -893,7 +924,8 @@ c2 = Coordinate(7, 8)
 
 print(repr(c1))
 
-#%%
+# %%
+
 
 class intSet(object):
     """An intSet is a set of integers
@@ -905,7 +937,7 @@ class intSet(object):
         self.vals = []
 
     def insert(self, e):
-        """Assumes e is an integer and inserts e into self""" 
+        """Assumes e is an integer and inserts e into self"""
         if not e in self.vals:
             self.vals.append(e)
 
@@ -926,9 +958,9 @@ class intSet(object):
         """Returns a string representation of self"""
         self.vals.sort()
         return '{' + ','.join([str(e) for e in self.vals]) + '}'
-        
+
     def intersect(self, other):
-        
+
         intersect = []
         if isinstance(other, intSet):
             if len(self.vals + other.vals) == 0:
@@ -938,14 +970,10 @@ class intSet(object):
                     if el in other.vals:
                         intersect.append(el)
                 return '{' + ','.join([str(e) for e in intersect]) + '}'
-            
+
     def __len__(self):
         return len(self.vals)
-        
-    
 
-                        
-                        
 
 a = intSet()
 a.insert(1)
@@ -961,7 +989,8 @@ a.intersect(b)
 
 print(len(a))
 
-#%%
+# %%
+
 
 class Spell(object):
     def __init__(self, incantation, name):
@@ -970,10 +999,10 @@ class Spell(object):
 
     def __str__(self):
         return self.name + ' ' + self.incantation + '\n' + self.getDescription()
-              
+
     def getDescription(self):
         return 'No description'
-    
+
     def execute(self):
         print(self.incantation)
 
@@ -982,6 +1011,7 @@ class Accio(Spell):
     def __init__(self):
         Spell.__init__(self, 'Accio', 'Summoning Charm')
 
+
 class Confundo(Spell):
     def __init__(self):
         Spell.__init__(self, 'Confundo', 'Confundus Charm')
@@ -989,66 +1019,81 @@ class Confundo(Spell):
     def getDescription(self):
         return 'Causes the victim to become confused and befuddled.'
 
+
 def studySpell(spell):
     print(spell)
+
 
 # spell = Accio()
 # spell.execute()
 # studySpell(spell)
-studySpell(Confundo())         
+studySpell(Confundo())
 
-#%%
+# %%
+
 
 class A(object):
     def __init__(self):
         self.a = 1
+
     def x(self):
         print("A.x")
+
     def y(self):
         print("A.y")
+
     def z(self):
         print("A.z")
+
 
 class B(A):
     def __init__(self):
         A.__init__(self)
         self.a = 2
         self.b = 3
+
     def y(self):
         print("B.y")
+
     def z(self):
         print("B.z")
+
 
 class C(object):
     def __init__(self):
         self.a = 4
         self.c = 5
+
     def y(self):
         print("C.y")
+
     def z(self):
         print("C.z")
+
 
 class D(C, B):
     def __init__(self):
         C.__init__(self)
         B.__init__(self)
         self.d = 6
+
     def z(self):
-        print("D.z")   
+        print("D.z")
 
 
 obj = D()
 
 print(obj.a)
 
-#%%
+# %%
+
 
 def genPrimes():
-    primes = [] 
-    yield 2 
+    primes = []
+    yield 2
     primes.append(2)
 
-    candidate = 3 
+    candidate = 3
 
     while True:
         is_prime = True
@@ -1063,8 +1108,9 @@ def genPrimes():
             yield candidate
 
         candidate += 2
-        
-#%%
+
+# %%
+
 
 a = [1, 2]
 b = a[:]
@@ -1072,26 +1118,24 @@ b = a[:]
 b.append(3)
 
 print(b)
-    
 
 
-#%%
+# %%
 
-import time
-def linearSearch(L, x):    
+def linearSearch(L, x):
     for e in L:
         if e == x:
             return True
     return False
 
+
 time_start = time.time()
-linearSearch([1, 2 , 3], 2)
+linearSearch([1, 2, 3], 2)
 time_stop = time.time() - time_start
 print("time = ", time_start, " : ", time_stop, "s")
 
 
-
-#%%
+# %%
 
 def program1(x):
     total = 0
@@ -1105,13 +1149,10 @@ def program1(x):
     return total
 
 
-
-
-
 print(program1(1))
 
 
-#%%
+# %%
 
 def program3(L):
     totalSum = 0
@@ -1119,11 +1160,12 @@ def program3(L):
     for x in L:
         print('hello')
         totalSum += x
-        
-program3([]) 
-        
 
-#%%
+
+program3([])
+
+
+# %%
 
 def search(L, e):
     for i in range(len(L)):
@@ -1132,8 +1174,7 @@ def search(L, e):
         if L[i] > e:
             return False
     return False
- 
-    
+
 
 def newsearch(L, e):
     size = len(L)
@@ -1145,44 +1186,41 @@ def newsearch(L, e):
     return False
 
 
-print(newsearch([0,1,2,3,4,5,6,7,8,9], 2))
+print(newsearch([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 2))
 
-#%%
+# %%
 
 
-def swapSort(L): 
+def swapSort(L):
     """ L is a list on integers """
     print("Original L: ", L)
     for i in range(len(L)):
         for j in range(i+1, len(L)):
             if L[j] < L[i]:
-                # the next line is a short 
+                # the next line is a short
                 # form for swap L[i] and L[j]
-                L[j], L[i] = L[i], L[j] 
+                L[j], L[i] = L[i], L[j]
                 print(L)
     print("Final L: ", L)
 
 
-def modSwapSort(L): 
+def modSwapSort(L):
     """ L is a list on integers """
     print("Original L: ", L)
     for i in range(len(L)):
         for j in range(len(L)):
             if L[j] < L[i]:
-                # the next line is a short 
+                # the next line is a short
                 # form for swap L[i] and L[j]
-                L[j], L[i] = L[i], L[j] 
+                L[j], L[i] = L[i], L[j]
                 print(L)
     print("Final L: ", L)
-    
-    
-
-swapSort([6,2,8,3,9,4,6,3,5])
 
 
+swapSort([6, 2, 8, 3, 9, 4, 6, 3, 5])
 
 
-#%%
+# %%
 
 
 '''
@@ -1191,21 +1229,22 @@ Q2: The provided McNuggets(n) function checks if you can purchase exactly
 It returns True if possible, or False if not.
 '''
 # 0.0/10.0 points (graded)
-# McDonald’s sells Chicken McNuggets in packages of 6, 9 or 20 McNuggets. 
-# Thus, it is possible, for example, to buy exactly 15 McNuggets 
-#(with one package of 6 and a second package of 9), 
-# but it is not possible to buy exactly 16 McNuggets, 
-# since no non- negative integer combination of 6's, 9's and 20's 
-#add up to 16. 
-# To determine if it is possible to buy exactly n McNuggets, 
-# one has to find non-negative integer (can be 0) values of a, b, and c 
-#such that
+# McDonald’s sells Chicken McNuggets in packages of 6, 9 or 20 McNuggets.
+# Thus, it is possible, for example, to buy exactly 15 McNuggets
+# (with one package of 6 and a second package of 9),
+# but it is not possible to buy exactly 16 McNuggets,
+# since no non- negative integer combination of 6's, 9's and 20's
+# add up to 16.
+# To determine if it is possible to buy exactly n McNuggets,
+# one has to find non-negative integer (can be 0) values of a, b, and c
+# such that
 # 6a + 9b + 20c = n
-# Write a function, called McNuggets that takes one argument, n, 
+# Write a function, called McNuggets that takes one argument, n,
 # and returns True if it is possible to buy a combination of 6, 9 and 20 pack
-# units such that 
-# the total number of McNuggets equals n, and otherwise returns False. 
+# units such that
+# the total number of McNuggets equals n, and otherwise returns False.
 # Hint: use a guess and check approach.
+
 
 def McNuggets(n):
     """
@@ -1217,7 +1256,6 @@ def McNuggets(n):
     # Your Code Here
 
     high = n//6+1
-
 
     if n != 0:
         for i in range(high):
@@ -1231,13 +1269,15 @@ def McNuggets(n):
     else:
         return False
 
+
 print(McNuggets(15))
 print(McNuggets(16))
 print(McNuggets(0))
 print(McNuggets(18))
 print(McNuggets(66))
 
-#%%
+# %%
+
 
 def sum_digits(s):
     """ assumes s a string
@@ -1246,44 +1286,43 @@ def sum_digits(s):
     # Your code here
     answer = 0
     isDigits = False
-            
-    
+
     for i in s:
         if i.isdigit():
             answer += int(i)
             isDigits = True
-    
+
     if not isDigits:
-        raise ValueError    
-    
+        raise ValueError
+
     return answer
-        
+
 
 sum_digits("a;d")
 
 
-
-#%%
+# %%
 
 def primes_list(N):
     primeList = [2]
-    
+
     if N < 2:
         return []
-    
+
     for i in range(3, N + 1, 2):
         for p in primeList:
             if i % p == 0:
                 break
         else:
             primeList.append(i)
-    
+
     return primeList
+
 
 print(primes_list(204))
 
 
-#%%
+# %%
 
 def uniqueValues(aDict):
     valueCount = {}
@@ -1307,14 +1346,16 @@ uniqueValues(aDict1)
 # uniqueValues(aDict2)
 
 
-#%%
+# %%
 
 class Container(object):
     """ Holds hashable objects. Objects may occur 0 or more times """
+
     def __init__(self):
         """ Creates a new container with no objects in it. I.e., any object 
             occurs 0 times in self. """
         self.vals = {}
+
     def insert(self, e):
         """ assumes e is hashable
             Increases the number times e occurs in self by 1. """
@@ -1322,15 +1363,15 @@ class Container(object):
             self.vals[e] += 1
         except:
             self.vals[e] = 1
+
     def __str__(self):
         s = ""
         for i in sorted(self.vals.keys()):
             if self.vals[i] != 0:
                 s += str(i)+":"+str(self.vals[i])+"\n"
         return s
-    
-    
-    
+
+
 class ASet(Container):
     def remove(self, e):
         """assumes e is hashable
@@ -1338,8 +1379,7 @@ class ASet(Container):
         # write code here
         if e in self.vals.keys():
             del self.vals[e]
-        
-        
+
     def is_in(self, e):
         """assumes e is hashable
            returns True if e has been inserted in self and
@@ -1348,8 +1388,8 @@ class ASet(Container):
         if e in self.vals.keys():
             return True
         else:
-            return False
 
+            return False
 
 
 d1 = ASet()
@@ -1367,18 +1407,3 @@ True
 False
 
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
